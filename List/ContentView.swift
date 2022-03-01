@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Checklist")
-            listStyle(GroupedListStyle())
+            .listStyle(GroupedListStyle())
         }
     }
 }
