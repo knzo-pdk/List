@@ -11,13 +11,20 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             List{
-                Text("Walk the dog")
-                Text("Brush my teeth")
-                Text("Learn iOS development")
-                Text("Soccer practice")
-                Text("Eat ice cream")
+                Section(header: Text("High prio")) {
+                    Text("Walk the dog")
+                    Text("Brush my teeth")
+                    Text("Learn iOS development")
+                    Text("Soccer practice")
+                    Text("Eat ice cream")
+                }
+                Section(header: Text("Low prio")){
+                    Text("Become millionaire")
+                    Text("Buy crayons")
+                }
             }
             .navigationTitle("Checklist")
+            listStyle(GroupedListStyle())
         }
     }
 }
