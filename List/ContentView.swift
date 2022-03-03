@@ -24,7 +24,7 @@ struct ContentView: View {
                 ForEach(itemList, id:\.self){ item in
                     Text(item)
                         .onTapGesture {
-                            itemList.append(item)
+                            itemList.remove(at: 0)
                             printChecklistContents()
                         }
                 }
