@@ -8,25 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var itemList = [
+        "Take vocal lessons",
+        "Record hit single",
+        "Learn every martial art",
+        "Design costume",
+        "Design crime-fighting vehicle",
+        "Come up with superhero name",
+        "Befriend space raccoon",
+        "Save the world",
+        "Star in blockbuster movie",]
     var body: some View {
         NavigationView{
             List{
-                Section(header: Text("High prio")) {
-                    Text("Walk the dog")
-                    Text("Brush my teeth")
-                    Text("Learn iOS development")
-                    Text("Soccer practice")
-                    Text("Eat ice cream")
-                }
-                Section(header: Text("Low prio")){
-                    Text("Become millionaire")
-                    Text("Buy crayons")
+                ForEach(itemList, id:\.self){ item in
+                    Text(item)
+                        .onTapGesture {
+                            itemList.append(item)
+                            printChecklistContents()
+                        }
                 }
             }
             .navigationTitle("Checklist")
-            .listStyle(GroupedListStyle())
+            .onAppear(){
+                printChecklistContents()
+            }
         }
     }
+    
+    //methods
+    func printChecklistContents(){
+        for item in itemList {
+            print(item)
+        }
+    }
+    
+    
 }
 
 
