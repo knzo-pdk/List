@@ -21,13 +21,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             List{
-                ForEach(itemList, id:\.self){ item in
+                ForEach(itemList, id: \.self){ item in
                     Text(item)
-                        .onTapGesture {
-                            itemList.remove(at: 0)
-                            printChecklistContents()
-                        }
                 }
+                .onDelete(perform: deleteListItem)
             }
             .navigationTitle("Checklist")
             .onAppear(){
@@ -41,6 +38,11 @@ struct ContentView: View {
         for item in itemList {
             print(item)
         }
+    }
+    
+    func deleteListItem(whichElement: IndexSet){
+        itemList.remove(atOffsets: whichElement)
+        printChecklistContents()
     }
     
     
