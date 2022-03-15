@@ -26,7 +26,8 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteListItem)
             }
-            .navigationTitle("Checklist")
+            .navigationBarItems(trailing: EditButton())
+            .navigationBarTitle("Checklist")
             .onAppear(){
                 printChecklistContents()
             }
